@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxalry | Premium Wellness & Natural Cosmetics</title>
+    <meta name="description" content="Luxalry offers premium supplements and natural cosmetics carefully designed to support your health, beauty and everyday wellbeing.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Cormorant Garamond for elegant serif headings, Inter for clean sans-serif body -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'lux-gold': '#B98A2E',
+                        'lux-dark-gold': '#8B6420',
+                        'lux-ivory': '#FDFBF8',
+                        'lux-white': '#FFFFFF',
+                        'lux-charcoal': '#353535',
+                        'lux-gray': '#BFC2C6',
+                        'lux-orange': '#F49A22',
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    spacing: {
+                        '128': '32rem',
+                        '144': '36rem',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1s ease-out forwards',
+                        'slow-pan': 'panImage 30s linear infinite alternate',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        panImage: {
+                            '0%': { transform: 'scale(1.05) translate(0, 0)' },
+                            '100%': { transform: 'scale(1.1) translate(-2%, -2%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Base styles for smooth rendering */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #FDFBF8; /* lux-ivory */
+            color: #353535; /* lux-charcoal */
+        }
+
+        /* Image overlay for readability over hero images */
+        .hero-overlay {
+            background: linear-gradient(to right, rgba(253, 251, 248, 0.95) 0%, rgba(253, 251, 248, 0.8) 50%, rgba(253, 251, 248, 0.2) 100%);
+        }
+
+        /* Elegant hover underline effect for links */
+        .hover-underline-animation {
+            display: inline-block;
+            position: relative;
+        }
+        .hover-underline-animation::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: currentColor;
+            transform-origin: bottom right;
+            transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+        }
+        .hover-underline-animation:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Intersection Observer animation classes */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Staggered delays for items in a grid */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+
+        /* Botanical subtle background pattern */
+        .bg-botanical {
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 0 C 60 20, 80 40, 100 50 C 80 60, 60 80, 50 100 C 40 80, 20 60, 0 50 C 20 40, 40 20, 50 0" fill="none" stroke="%23B98A2E" stroke-width="0.5" opacity="0.1"/></svg>');
+            background-size: 200px 200px;
+        }
+    </style>
+</head>
+<body class="font-sans font-light selection:bg-lux-gold selection:text-white">
+
+    <header class="fixed w-full top-0 z-50 transition-all duration-300 bg-lux-ivory/90 backdrop-blur-md border-b border-lux-gray/20" id="main-nav">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 h-24 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <img src="luxalry, luxury, supplement, suppliments, health, فاخرة, مكملات, مكملات غذائية, العناية بالصحة.jpg" alt="Luxalry Logo" class="h-16 w-auto mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center gap-10 font-sans text-sm tracking-widest uppercase text-lux-charcoal/80">
+                <a href="#about" class="hover-underline-animation hover:text-lux-gold transition-colors">Philosophy</a>
+                <a href="#collections" class="hover-underline-animation hover:text-lux-gold transition-colors">Collections</a>
+                <a href="#featured" class="hover-underline-animation hover:text-lux-gold transition-colors">Featured</a>
+            </nav>
+
+            <!-- CTA -->
+            <div class="hidden md:block">
+                <a href="https://luxalry.shop" class="inline-block border border-lux-gold text-lux-gold px-8 py-3 uppercase tracking-wider text-xs font-medium hover:bg-lux-gold hover:text-white transition-all duration-300">
+                    Visit Shop
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button (simplified for aesthetic) -->
+            <button class="md:hidden text-lux-charcoal p-2 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="relative min-h-screen flex items-center pt-24 overflow-hidden bg-lux-ivory">
+            <!-- Background Image Area (Right side visually) -->
+            <div class="absolute inset-0 w-full h-full md:w-2/3 md:left-1/3 z-0 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?q=80&w=2553&auto=format&fit=crop" alt="Premium wellness composition with natural lighting" class="object-cover w-full h-full animate-slow-pan opacity-90">
+            </div>
+            
+            <!-- Content Overlay -->
+            <div class="absolute inset-0 hero-overlay md:w-3/4 z-10"></div>
+
+            <div class="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 w-full flex flex-col justify-center">
+                <div class="max-w-2xl animate-fade-in-up">
+                    <span class="block text-lux-gold tracking-[0.2em] text-xs uppercase mb-6 font-medium">Moroccan Premium Wellness</span>
+                    <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl leading-[1.1] text-lux-charcoal mb-8">
+                        Nature Meets <br>
+                        <span class="italic text-lux-gold">Premium</span> Wellness.
+                    </h1>
+                    <p class="text-lg md:text-xl text-lux-charcoal/80 font-light leading-relaxed mb-12 max-w-lg">
+                        Premium supplements and natural cosmetics carefully designed to support your health, beauty, and everyday wellbeing.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+                        <a href="https://luxalry.shop" class="bg-lux-gold text-white px-10 py-4 uppercase tracking-wider text-sm font-medium hover:bg-lux-dark-gold transition-all duration-300 shadow-sm hover:shadow-md w-full sm:w-auto text-center">
+                            Explore Collection
+                        </a>
+                        <a href="#about" class="group flex items-center gap-3 text-lux-charcoal hover:text-lux-gold transition-colors uppercase tracking-widest text-xs font-medium w-full sm:w-auto justify-center sm:justify-start py-4">
+                            <span>Our Story</span>
+                            <svg class="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 animate-fade-in-up" style="animation-delay: 1s;">
+                <span class="text-[10px] uppercase tracking-widest text-lux-charcoal/50">Scroll</span>
+                <div class="w-px h-12 bg-gradient-to-b from-lux-gold/50 to-transparent"></div>
+            </div>
+        </section>
+
+        <section id="about" class="py-32 bg-white relative">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-lux-ivory rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/3"></div>
+            
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                    
+                    <div class="order-2 lg:order-1 relative reveal-on-scroll">
+                        <div class="aspect-[4/5] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1617897903246-719242758050?q=80&w=2574&auto=format&fit=crop" alt="Natural ingredients and mortar" class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-1000">
+                        </div>
+                        <!-- Decorative element -->
+                        <div class="absolute -bottom-8 -left-8 w-32 h-32 border-l border-b border-lux-gold/30 z-[-1]"></div>
+                    </div>
+
+                    <div class="order-1 lg:order-2 reveal-on-scroll delay-200">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-12 h-px bg-lux-gold"></div>
+                            <span class="uppercase tracking-[0.2em] text-xs text-lux-gold font-medium">Our Philosophy</span>
+                        </div>
+                        
+                        <h2 class="font-serif text-4xl lg:text-5xl leading-tight mb-8">
+                            The harmony of <br>Nature and Science.
+                        </h2>
+                        
+                        <div class="space-y-6 text-lux-charcoal/75 font-light leading-relaxed">
+                            <p>
+                                At Luxalry, we believe that true wellness stems from a delicate balance. We source the finest botanicals from Moroccan soil and beyond, applying rigorous scientific formulation to unlock their full potential.
+                            </p>
+                            <p>
+                                Our commitment to quality, transparency, and safety ensures that every supplement and cosmetic product we create is a testament to natural purity and scientific integrity.
+                            </p>
+                            <p class="text-lux-charcoal font-medium italic font-serif text-xl pt-4">
+                                "Develop premium solutions combining natural ingredients and elegant design to improve everyday wellbeing."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-lux-ivory border-y border-lux-gray/10 bg-botanical">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                
+                <div class="text-center mb-16 reveal-on-scroll">
+                    <h2 class="font-serif text-3xl lg:text-4xl">The Luxalry Standard</h2>
+                    <p class="mt-4 text-lux-charcoal/60 font-light max-w-xl mx-auto">Uncompromising quality in every detail.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                    
+                    <!-- Card 1 -->
+                    <div class="group flex flex-col items-center text-center p-8 bg-white border border-lux-gray/10 hover:border-lux-gold/30 transition-colors duration-500 reveal-on-scroll delay-100">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-lux-ivory text-lux-gold mb-6 group-hover:bg-lux-gold group-hover:text-white transition-colors duration-500">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="font-serif text-xl mb-3">Natural Ingredients</h3>
+                        <p class="text-sm text-lux-charcoal/60 font-light leading-relaxed">Sourced from the purest environments, prioritizing organic and non-GMO botanicals.</p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="group flex flex-col items-center text-center p-8 bg-white border border-lux-gray/10 hover:border-lux-gold/30 transition-colors duration-500 reveal-on-scroll delay-200">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-lux-ivory text-lux-gold mb-6 group-hover:bg-lux-gold group-hover:text-white transition-colors duration-500">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        </div>
+                        <h3 class="font-serif text-xl mb-3">Scientifically Formulated</h3>
+                        <p class="text-sm text-lux-charcoal/60 font-light leading-relaxed">Developed by experts to ensure optimal bioavailability and proven efficacy.</p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="group flex flex-col items-center text-center p-8 bg-white border border-lux-gray/10 hover:border-lux-gold/30 transition-colors duration-500 reveal-on-scroll delay-300">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-lux-ivory text-lux-gold mb-6 group-hover:bg-lux-gold group-hover:text-white transition-colors duration-500">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                        </div>
+                        <h3 class="font-serif text-xl mb-3">Premium Quality</h3>
+                        <p class="text-sm text-lux-charcoal/60 font-light leading-relaxed">Manufactured in approved facilities adhering to the highest global standards.</p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="group flex flex-col items-center text-center p-8 bg-white border border-lux-gray/10 hover:border-lux-gold/30 transition-colors duration-500 reveal-on-scroll delay-400">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-lux-ivory text-lux-gold mb-6 group-hover:bg-lux-gold group-hover:text-white transition-colors duration-500">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        </div>
+                        <h3 class="font-serif text-xl mb-3">Trusted Wellness</h3>
+                        <p class="text-sm text-lux-charcoal/60 font-light leading-relaxed">Approved by healthcare professionals and trusted by modern families.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="collections" class="py-32 bg-white">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="text-center mb-20 reveal-on-scroll">
+                    <span class="uppercase tracking-[0.2em] text-xs text-lux-gold font-medium block mb-4">Discover</span>
+                    <h2 class="font-serif text-4xl lg:text-5xl">Our Collections</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
+                    
+                    <!-- Collection 1: Supplements -->
+                    <a href="https://luxalry.shop/collections/supplements" class="group block relative overflow-hidden reveal-on-scroll">
+                        <div class="aspect-[4/3] md:aspect-[3/4] lg:aspect-[4/5] bg-lux-ivory overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1584362917165-526a968579e8?q=80&w=2680&auto=format&fit=crop" alt="Premium natural supplements" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90">
+                            <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full p-8 md:p-12 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex flex-col justify-end">
+                            <h3 class="font-serif text-3xl text-white mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Supplements</h3>
+                            <div class="flex items-center gap-2 text-white/80 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-100">
+                                <span class="text-sm uppercase tracking-widest">Explore</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Collection 2: Cosmetics -->
+                    <a href="https://luxalry.shop/collections/cosmetics" class="group block relative overflow-hidden reveal-on-scroll delay-200 md:mt-16">
+                        <div class="aspect-[4/3] md:aspect-[3/4] lg:aspect-[4/5] bg-lux-ivory overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1608248593859-9ee4b5a34e06?q=80&w=2553&auto=format&fit=crop" alt="Natural premium cosmetics" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90">
+                            <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full p-8 md:p-12 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex flex-col justify-end">
+                            <h3 class="font-serif text-3xl text-white mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Cosmetics</h3>
+                            <div class="flex items-center gap-2 text-white/80 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-100">
+                                <span class="text-sm uppercase tracking-widest">Explore</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="featured" class="py-32 bg-lux-charcoal text-white relative overflow-hidden">
+            <!-- Subtle background elements -->
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#2A2A2A] to-transparent"></div>
+            
+            <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                    
+                    <!-- Product Info -->
+                    <div class="order-2 lg:order-1 reveal-on-scroll">
+                        <span class="uppercase tracking-[0.2em] text-xs text-lux-gold font-medium block mb-4">Featured Formulation</span>
+                        <h2 class="font-serif text-4xl lg:text-6xl mb-4">Smooth Sleep</h2>
+                        <p class="text-xl font-serif italic text-white/60 mb-8">Relaxation Support System</p>
+                        
+                        <p class="text-white/70 font-light leading-relaxed mb-10 max-w-lg">
+                            A natural synergy of Valerian, Chamomile, Zinc, and Fluor designed to calm the nervous system and promote deep, restorative sleep. Awaken feeling refreshed and rejuvenated.
+                        </p>
+
+                        <div class="space-y-4 mb-12">
+                            <div class="flex items-start gap-4">
+                                <svg class="w-5 h-5 text-lux-gold mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-medium text-sm tracking-wider uppercase mb-1">Deep Relaxation</h4>
+                                    <p class="text-sm text-white/50 font-light">Natural formula that calms nerves before bedtime.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <svg class="w-5 h-5 text-lux-gold mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-medium text-sm tracking-wider uppercase mb-1">Prolonged Rest</h4>
+                                    <p class="text-sm text-white/50 font-light">Helps increase the duration of deep sleep phases.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <svg class="w-5 h-5 text-lux-gold mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-medium text-sm tracking-wider uppercase mb-1">100% Organic</h4>
+                                    <p class="text-sm text-white/50 font-light">Non-GMO, vegan capsules made in Morocco.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="https://luxalry.shop" class="inline-block bg-white text-lux-charcoal px-10 py-4 uppercase tracking-wider text-sm font-medium hover:bg-lux-gold hover:text-white transition-all duration-300">
+                            Discover Smooth Sleep
+                        </a>
+                    </div>
+
+                    <!-- Product Image Mockup -->
+                    <div class="order-1 lg:order-2 flex justify-center lg:justify-end reveal-on-scroll delay-200">
+                        <div class="relative w-full max-w-md">
+                            <!-- Abstract background shape behind bottle -->
+                            <div class="absolute inset-0 bg-lux-gold/10 rounded-full blur-3xl transform scale-75"></div>
+                            
+                            <!-- Product Image Container -->
+                            <div class="relative bg-white p-8 pb-12 shadow-2xl border border-white/10 group">
+                                <div class="absolute top-4 right-4 bg-lux-ivory text-lux-charcoal text-[10px] uppercase tracking-widest px-2 py-1 font-medium">Made in Morocco</div>
+                                
+                                <!-- Simulating the product label layout based on the provided PDF data -->
+                                <div class="mt-8 mb-6 text-center border-b border-lux-gray/20 pb-6">
+                                    <img src="luxalry, luxury, supplement, suppliments, health, فاخرة, مكملات, مكملات غذائية, العناية بالصحة.jpg" alt="Luxalry" class="h-10 mx-auto mb-4 opacity-90 mix-blend-multiply" style="filter: grayscale(100%) contrast(200%);">
+                                    <h3 class="font-serif text-3xl text-lux-charcoal tracking-wide mb-1">SMOOTH SLEEP</h3>
+                                    <p class="text-[10px] uppercase tracking-widest text-lux-gold">Relaxation Support System</p>
+                                </div>
+                                
+                                <div class="flex justify-between items-center text-[10px] text-lux-charcoal/60 uppercase tracking-wider px-4 mb-8">
+                                    <span>60 Veg Capsules</span>
+                                    <span>Natural Safe</span>
+                                </div>
+                                
+                                <div class="bg-lux-ivory p-4 text-center">
+                                    <p class="text-lux-charcoal/80 font-serif italic text-sm mb-2">"Formule naturelle qui calme les nerfs."</p>
+                                    <p class="text-lux-gold text-xs font-medium uppercase tracking-widest">Non-GMO • 100% Organic</p>
+                                </div>
+                                
+                                <!-- Decorative element representing capsules -->
+                                <div class="absolute -right-6 bottom-12 w-12 h-24 border border-lux-gold/30 rounded-full bg-white/5 backdrop-blur-sm hidden md:block"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-white border-b border-lux-gray/20">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-10 text-center md:text-left reveal-on-scroll">
+                    
+                    <div class="flex-1 px-8 border-b md:border-b-0 md:border-r border-lux-gray/20 pb-8 md:pb-0 last:border-0">
+                        <h3 class="font-serif text-2xl text-lux-charcoal mb-2">Nature</h3>
+                        <p class="text-sm text-lux-charcoal/60 font-light">Harnessing the purest botanicals.</p>
+                    </div>
+                    
+                    <div class="flex-1 px-8 border-b md:border-b-0 md:border-r border-lux-gray/20 pb-8 md:pb-0 last:border-0">
+                        <h3 class="font-serif text-2xl text-lux-charcoal mb-2">Science</h3>
+                        <p class="text-sm text-lux-charcoal/60 font-light">Rigorous formulation and research.</p>
+                    </div>
+                    
+                    <div class="flex-1 px-8 pb-8 md:pb-0">
+                        <h3 class="font-serif text-2xl text-lux-charcoal mb-2">Quality</h3>
+                        <p class="text-sm text-lux-charcoal/60 font-light">Uncompromising standards in every step.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-32 bg-lux-ivory text-center relative overflow-hidden bg-botanical">
+            <div class="max-w-3xl mx-auto px-6 relative z-10 reveal-on-scroll">
+                <img src="luxalry, luxury, supplement, suppliments, health, فاخرة, مكملات, مكملات غذائية, العناية بالصحة.jpg" alt="Luxalry Icon" class="h-16 mx-auto mb-8 opacity-50 mix-blend-multiply">
+                <h2 class="font-serif text-4xl lg:text-6xl text-lux-charcoal mb-6">Start Your Wellness Journey.</h2>
+                <p class="text-lg text-lux-charcoal/70 font-light mb-12 max-w-xl mx-auto">Elevate your daily routine with our scientifically formulated natural supplements and premium cosmetics.</p>
+                
+                <a href="https://luxalry.shop" class="inline-block bg-lux-gold text-white px-12 py-5 uppercase tracking-wider text-sm font-medium hover:bg-lux-dark-gold transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1">
+                    Visit Luxalry Shop
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white py-16 border-t border-lux-gray/20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-8">
+            
+            <div class="flex flex-col items-center md:items-start">
+                <img src="luxalry, luxury, supplement, suppliments, health, فاخرة, مكملات, مكملات غذائية, العناية بالصحة.jpg" alt="Luxalry Logo" class="h-12 mb-4 mix-blend-multiply">
+                <p class="text-xs text-lux-charcoal/50 uppercase tracking-widest font-medium">Nature. Science. Elegance.</p>
+            </div>
+
+            <div class="flex gap-8 text-sm text-lux-charcoal/60">
+                <a href="https://luxalry.shop" class="hover:text-lux-gold transition-colors">Shop</a>
+                <a href="#" class="hover:text-lux-gold transition-colors">Contact</a>
+                <a href="#" class="hover:text-lux-gold transition-colors">Privacy</a>
+            </div>
+
+            <div class="text-xs text-lux-charcoal/40 font-light">
+                &copy; <span id="year"></span> Luxalry. All rights reserved.
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Navbar scroll effect
+        const nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-sm', 'py-[-10px]');
+                // Make the logo slightly smaller on scroll for a refined feel
+                nav.querySelector('img').classList.add('h-12');
+                nav.querySelector('img').classList.remove('h-16');
+            } else {
+                nav.classList.remove('shadow-sm', 'py-[-10px]');
+                nav.querySelector('img').classList.add('h-16');
+                nav.querySelector('img').classList.remove('h-12');
+            }
+        });
+
+        // Intersection Observer for elegant reveal animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // Optional: stop observing once revealed
+                        // observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            revealElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
